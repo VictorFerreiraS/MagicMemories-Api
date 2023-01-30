@@ -12,7 +12,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=rootuser
       - MONGO_INITDB_ROOT_PASSWORD=rootpass
   mongo-express:
-    image: mongo-express
+    image: mongo-express:1.0.0-alpha.4
     container_name: mongo-express
     restart: always
     ports:
