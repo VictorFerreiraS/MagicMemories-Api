@@ -18,9 +18,9 @@ public class SingleImageService {
 
     public Boolean findImageBySrc(String src) {
         if (repository.findSingleImageBySingleImageSRC(src).isPresent()){
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
     }
 
