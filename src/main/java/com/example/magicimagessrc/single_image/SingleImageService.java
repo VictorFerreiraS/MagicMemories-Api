@@ -16,5 +16,15 @@ public class SingleImageService {
         return repository.findAll();
     }
 
+    public Boolean findImageBySrc(String src) {
+        if (repository.findSingleImageBySingleImageSRC(src).isPresent()){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
+    public void postImages(SingleImage singleImage) {
+            repository.insert(singleImage);
+    }
 }

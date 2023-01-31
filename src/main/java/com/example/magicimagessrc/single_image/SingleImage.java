@@ -15,6 +15,7 @@ public class SingleImage {
 
     private Boolean matched = true;
 
+//  GETTER AND SETTER
     public String getSingleImageSRC() {
         return singleImageSRC;
     }
@@ -23,6 +24,7 @@ public class SingleImage {
         this.singleImageSRC = singleImageSRC;
     }
 
+//    CONSTRUCTORS
     public SingleImage() {
     }
 

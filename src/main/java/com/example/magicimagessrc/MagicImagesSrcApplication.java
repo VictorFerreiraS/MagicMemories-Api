@@ -19,7 +19,7 @@ public class MagicImagesSrcApplication {
     @Bean
     CommandLineRunner runner(SingleImageRepository repository, SingleImageController controller) {
         return args -> {
-//  Creating local and database lists
+//            Creating local and database lists
             List<SingleImage> localImagesList = new ArrayList<>(List.of(
                     new SingleImage("/img/helmet-1.png"),
                     new SingleImage("/img/potion-1.png"),
@@ -28,26 +28,8 @@ public class MagicImagesSrcApplication {
                     new SingleImage("/img/shield-1.png"),
                     new SingleImage("/img/sword-1.png")
             ));
-            List<SingleImage> databaseImagesList = controller.fetchAllImages();
 
-            //  Lists with the src only
-            List<String> localImagesSrcs = localImagesList.stream()
-                    .map(il -> il.getSingleImageSRC())
-                    .collect(Collectors.toList());
-            List<String> databaseImagesSrcs = databaseImagesList.stream()
-                    .map(SingleImage::getSingleImageSRC)
-                    .toList();
-
-                localImagesSrcs.forEach(li -> {
-                    if (databaseImagesSrcs.stream().anyMatch(dbi -> li.equals(dbi))) {
-                        System.out.println("An image with " + li + " already exists");
-                        throw new IllegalArgumentException("An image with " + li + " already exists");
-                    } else {
-                        System.out.println("inserting");
-                        repository.insert(localImagesList);
-                    }
-//                System.out.println(databaseImagesSrcs.stream().anyMatch(dbi -> li.equals(dbi)));
-                });
+            controller.postImages(localImagesList);
 
         };
     }
